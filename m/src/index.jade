@@ -2,6 +2,8 @@ doctype html
 html
   include blocks/top_head
   body
+    script.
+      window.scrollTo(0,0);
     .bg-placeholder(style='background-color: rgb(17, 11, 27);')
       .loader
       svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 2600 960')
@@ -165,9 +167,6 @@ html
           {type: createjs.AbstractLoader.IMAGE, src: 'i/g360_text.png'}
         ]);
 
-        queue.on("progress", function (e) {
-          console.log(e.progress);
-        }, this);
         queue.on("complete", function () {
           $(window).scrollTop(0);
 

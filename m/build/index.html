@@ -200,6 +200,7 @@
     </style>
   </head>
   <body>
+    <script>window.scrollTo(0,0);</script>
     <div style="background-color: rgb(17, 11, 27);" class="bg-placeholder">
       <div class="loader"></div>
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 2600 960">
@@ -350,9 +351,6 @@
           {type: createjs.AbstractLoader.IMAGE, src: 'i/g360_text.png'}
         ]);
       
-        queue.on("progress", function (e) {
-          console.log(e.progress);
-        }, this);
         queue.on("complete", function () {
           $(window).scrollTop(0);
       
