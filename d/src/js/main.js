@@ -1,8 +1,5 @@
 //= plugins.js
 
-$(document).ready(function() {
-
-
 	var PanoramaDrag = function (phoneSelector, panoramaSelector, animationStartDelay, animator) {
 		this.phoneSelector = phoneSelector || '.draggable';
 		this.panoramaSelector = panoramaSelector || '.panorama';
@@ -217,25 +214,6 @@ PanoramaAnimator.prototype._secondStageInCompleted = function () {
 window.PanoramaDrag = PanoramaDrag;
 window.PanoramaAnimator = PanoramaAnimator;
 
-
-
-
-
-
-
-
-
-
-var $menu = $('.section--social'), $section1 = $('.s1');
-$(window).on('scroll resize', function() {
-  if ($(this).scrollTop() >= $section1.offset().top) {
-    $menu.addClass('pinned');
-  } else {
-    $menu.removeClass('pinned');
-  }
-}).triggerHandler('scroll');
-
-
 function _throttle(func, limit) {
   var inThrottle,
   lastFunc,
@@ -273,4 +251,3 @@ function _debounce(func, wait, immediate) {
 		if (callNow) func.apply(context, args);
 	};
 };
-});
