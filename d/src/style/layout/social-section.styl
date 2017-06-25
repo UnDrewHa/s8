@@ -1,0 +1,36 @@
+.section--social
+	background-color: #fff;
+	height 51px
+	border-bottom 1px solid #cfcfcf
+	z-index 1
+	.container
+		position relative
+		height 100%
+	&.pinned
+		position fixed
+		top 0
+		z-index 1000
+
+.social-row
+	display flex
+	flex-direction row
+
+	&-logo
+		width 220px
+		margin 0 auto
+		display flex
+		align-items flex-start
+		position relative
+		left 29px
+		padding-top 10px
+		.logo--samsung
+			margin-top 7px
+	
+	.social
+		position absolute
+		right 0
+		top 50%
+		transform translateY(-50%)
+		z-index 1
+		width 150px
+		justify-content space-between

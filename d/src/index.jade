@@ -1,0 +1,197 @@
+doctype html
+html
+  include blocks/top_head
+  body(style='background-color: rgb(17, 11, 27); overflow: hidden;')
+    .bg-placeholder(style='background-color: rgb(17, 11, 27);')
+      .loader
+      svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', viewbox='0 0 3700 1080')
+        filter#blur(filterunits='objectBoundingBox', color-interpolation-filters='sRGB')
+          fegaussianblur(stddeviation='20,20', edgemode='duplicate')
+            fecomponenttransfer
+              fefunca(type='discrete', tablevalues='1 1')
+        image(filter='url(#blur)', xlink:href='data:image/jpeg;base64,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', x='0', y='0', height='100%', width='3700')
+    
+    .wrapper
+      .head-animation
+        .panorama
+          img(src='i/panorama_bg.jpg' alt='')
+        .screen0
+          .screen0__container
+            .screen0__title
+              span.st1._animation «Комики
+              span.st2._animation и музыканты 
+              span.st3._animation по своей сути — 
+              span.st4._animation ворчуны»
+            .screen0__text._animation В совместном проекте Samsung Galaxy и Buro 24/7 шоумен Сергей Мезенцев рассказал, как сделать русский стиль классным
+            .screen0__btn._animation
+        .logos
+            a.buro(href='/')
+            a.samsung(href='http://www.samsung.com/ru/smartphones/galaxy-s8/', target='_blank')
+        .start-social.social.social--white.social--column
+            // .social-item.social-item--fb
+            // .social-item.social-item--vk
+            // .social-item.social-item--tw
+            // .social-item.social-item--tl
+            .ya-share2(data-services='facebook,vkontakte,twitter,telegram')
+        .animation-parts
+          .h-line
+          .v-side-line
+          .v-line
+          .circle__wrap
+            .circle-big__title._hide-on-drag <span class='title1 _animation'>Как найти себя</span><span class='title2 _animation'>в комедии и музыке</span>
+            .circle-big._animation
+              .circle-small
+          .info-text._hide-on-drag._animation Проведите телефоном слева направо, чтобы увидеть всю панораму
+          .rotate-icon._hide-on-drag._animation
+          .phone.draggable._animation
+
+      section.section.section--nav
+        .container
+          nav.nav.nav--top
+            a.nav-link(href='#') АННА ЦФАСМАН
+            a.nav-link(href='#') АГЛая Тарасова
+            a.nav-link(href='#') Сергей Мезенцев
+      section.section.section--social
+        .container
+          .social-row
+            .social-row-logo
+              a.logo.logo--birro(href='#')
+                img(src='i/b_grey.png')
+              a.logo.logo--samsung(href='#')
+                img(src='i/s_blue.png')
+            .social.social--inline.social--grey
+              // .social-item.social-item--fb
+              // .social-item.social-item--vk
+              // .social-item.social-item--tw
+              // .social-item.social-item--tl
+              .ya-share2(data-services='facebook,vkontakte,twitter,telegram')
+      section.section.s1
+        .container
+          .container__col.col1
+            p.p1 Я начал придумывать персонажей, как только стал заниматься юмором. Я стараюсь вернуть этот забытый прием в русскую комедию. Когда ты входишь в образ, ты больше не являешься собой. От лица персонажа ты можешь говорить вещи, в которые сам не веришь, — иногда возмутительные и гнусные. Образ позволяет тебе делать то, на что настоящий ты не способен. И зритель готов тебе такое простить, ведь он понимает: все это — игра смеха ради. 
+            .image1
+              img(src='i/image1.jpg' alt='')
+          .container__col.col2
+            p.p2 Чтобы проработать своего персонажа, мне нужно вывести его на публику и наблюдать за ее реакцией. Если от шутки весело только мне, значит, нужно подать героя иначе. Я просто бушую, когда зрителю не смешно! Не удается шутка — усвой урок, забудь вкус неудачи и иди дальше. Успех здесь не учит ничему в отличие от неуспеха. Пробуй, пока все не будут ржать вместе с тобой.  
+            .image2
+              img(src='i/image2.jpg' alt='')
+            p.p3 На создание персонажей меня вдохновляют фрики, которые выделяются из толпы. Забавно, но такие люди считают чудными всех вокруг, кроме себя. Дело в том, что у них железобетонная картина мира: они абсолютно цельные личности. Таковы и мои персонажи.
+            p.p4 А еще в каждом из них есть что-то от меня. Я нахожу в себе какую-то черту характера и выкручиваю эту характеристику на максимум. Почти все, что необходимо для создания персонажа, можно найти в себе самом. Это способ самопознания, ведь внутри мы очень разные.    
+          blockquote Мой юмор похож на деликатес: он сложный и странный, и чтобы было вкусно, надо на него настроиться.
+      section.section.s2
+        .container
+          p Сейчас у меня в работе пять персонажей.<br>Илья Огурцов — провинциальный журналист Реутов-ТВ. С этим образом я прожил дольше всего — около восьми лет. Он настоящий праведник, ничего не знает о женщинах, никогда не рискует. Он живет со своей бабушкой, и ее мнение для него — закон. Когда я был подростком, я был похож на Илью Огурцова.
+          p Виктор Делюкс — телеведущий. Он стал популярным ни за что, совсем как участники «Дома-2». Витя считает себя ультраселебрити, у него нет авторитетов, поэтому он может сесть на колени к любой знаменитости, назвать его котиком и задать неудобный вопрос. И никто не обидится на это панибратство, потому что все его глупости обаятельны. Витя наслаждается тем, что он в тусовке, он на экране. Я разделяю эти чувства, но не показываю их так ярко.
+          p Прообразом Дракона стал фрик, которого я увидел в метро. Этот персонаж — мастер по ремонту телевизоров, сексуально озабоченный пикапер. Он раздает свои мерзкие советы по соблазнению всем вокруг.
+          p DJ Oguretz — провинциальный музыкант, романтик, амбициозный неудачник. Он немного отстал от времени. Поэтому у него свое представление о том, что модно. Он живет в деревне и ведет себя как суперзвезда. Когда-то я был таким же мальчиком из провинции: ковырялся в компьютере и верил в свою мечту.
+          p Когда я повзрослел и стал отцом, я нашел в себе все самое мужественное, гипертрофировал эти черты и передал их своему персонажу Lil Dik. Он владеет сетью автомоек STRUYA. Уверен в себе, плейбой, позер, суперденди. Он максимально далек от творчества, но все же занимается музыкой и таким образом хочет всем рассказать о своих взглядах на жизнь.
+      section.section.s3
+        .container
+          p С недавних пор я начал показывать своим зрителям настоящего себя. Например, в роликах «Сережа и микрофон» я хожу по городу, беру у прохожих шуточные интервью или же в формате стендапа рассказываю им о том, что меня беспокоит. Настоящий Сергей Мезенцев — очень серьезный и вдумчивый. Это важные качества для комика, который работает с сатирой. Чтобы играть на этом поле, ты должен иметь свою точку зрения и со знанием дела критиковать взгляды оппонента. Мой стиль — это не шутка ради шутки. Я всегда пытаюсь сказать что-то важное. 
+          .image3
+              img(src='i/image3.jpg' alt='')
+      section.section.s4
+        .image4
+              img(src='i/image4.jpg' alt='')            
+      section.section.s5
+        .container
+          blockquote У моих образов очень странные отношения с жизнью. Все они застывшие. Обстоятельства вокруг них меняться могут, а вот они сами — нет. Это правило комедии. 
+          .container__col.col1
+            p.p1 Я начал заниматься музыкой одновременно с комедией. Мне хочется поженить эти два мира: звук должен быть атмосферным и задавать веселое настроение, а слова песен — ироничными настолько, чтобы слушатель принимал усмешку за чистую монету. Песни моих персонажей — больше чем шутки. Они должны быть классными, чтобы их хотелось закачать в плеер.
+            .image5
+              img(src='i/image5.jpg' alt='')
+          .container__col.col2
+            p.p2 Единственное, что оправдывает музыкальные проекты от меня — их развлекательная составляющая. И если ее убрать, то ценность моей работы будет небольшой. Ведь как музыкант я пока любитель.
+            p.p3 Я думаю, что музыкальные проекты, в которых песни исполняют выдуманные герои, долго жить не могут. Исключение — это Gorillaz. В конце концов, слушателям хочется идти за настоящими людьми.
+            p.p4 Я хотел бы выпустить альбом от лица Сергея Мезенцева. Но думаю, что для этого время еще не пришло. Сейчас такая работа будет казаться поверхностной и сыроватой. Пока я пытаюсь вырасти как музыкант: пишу french house и красивые гармонии. В личном творчестве я не продумываю все до мелочей — так я делаю, только когда работаю над персонажем. В музыке я стараюсь быть искренним и рассказывать обо всем, что чувствую и думаю. Комики и музыканты по своей сути — ворчуны, которые за что-то цепляются и начинают говорить об этом. У этих миров много общего.
+
+          .figure-text
+            span.t1 Сейчас
+            span.t2 в России
+            span.t3 самое удачное время для юмора
+            p.t4  Все потому, что ушла гегемония телевидения. Многие считают, что телик — это для маргиналов и для стариков. Сегодня ребята, которые хотят шутить, могут доставлять свой контент другими способами: через твиттер или ютуб. Стимул развиваться — публика, которая никого не щадит. И, если они тебя не сломают, твой юмор станет только лучше.
+      section.section.s6
+        .container
+          p.title-text Русские музыканты должны наконец признать то, что они работают для русского слушателя.
+          p.p1  Нам часто пытаются продать некачественную версию западной музыки. Адаптировать что-то для России сложно, ведь наша страна очень специфическая. Почему в большинстве клипов русские музыканты едут по пустыне на «мустанге»? Ничего не изменится, если ты будет рассекать по трассе между березами на «Волге». Это будет так же красиво, но более органично. И это не про патриотизм, а про уместность. Можно сделать русский стиль классным. Это уже получилось у Гоши Рубчинского в мире моды.
+          .image6
+              img(src='i/image6.jpg' alt='')
+          .image7
+              img(src='i/image7.jpg' alt='')
+          p.dark-offset Почаще спрашивайте себя: «Где я хочу оказаться через пять лет?». Это страшно неудобный вопрос, ведь мы все боимся неизвестности. У меня есть на него ответ. И я работаю над тем, чтобы все сбылось. Я хочу собрать команду единомышленников и сделать кино или сериал, например, для «Амедиатеки». Здесь я смогу задействовать все навыки, которыми овладел за годы в юморе: монтаж, написание музыки, разработка сценариев и многое другое. Это будет коммерческое кино для широкого проката — попсовая комедия, которая понравилась бы даже моей маме. При этом я хочу, чтобы в фильме просматривался мой почерк.
+      section.section.s7
+        .container
+          .container__col.col1
+            p.p1 Я продолжаю работать над персонажами. DJ Oguretz сейчас на гастролях. Возможно, когда-нибудь у него появится свой boys’ band, в его составе он будет читать рэп. Дракон снимается в клипе на песню «Dragon», которую я написал вместе с группой Найка Борзова Killer Honda. Красавчик и безумец Витя Делюкс задействован в рекламе.
+            .image8
+              img(src='i/image8.jpg' alt='')
+          .container__col.col2
+            p.p2 У Lil Dik недавно вышел новый альбом. Сейчас я горю этим персонажем и ищу для<br>него правильную подачу. Пока зрители его недолюбливают. Lil Dik уже приступил к третьему альбому. Может быть, я уведу этого героя в поп-музыку. У него уже есть треки в таком стиле, например, «Ты полный фарш» и «Неоновый говнюк». Они идеальны для тусовок, поэтому их очень хвалят. А может, я напишу для Lil Dik серьезный рэп с глубокими текстами. Вообще мне кажется, что рэп — это новый поп, культура, на которую реально молится современная молодежь.<br>Новых персонажей я пока не придумываю. С этими «голосами в своей голове» разобраться бы.
+            p.note-text 
+              | Фотограф - Алексей Константинов <br>
+              | Ассистент фотографа - Илья Купцов <br>
+              | Стилист - Дарья Кузьминова<br>
+              | Макияж и прическа - Светлана Житкевич<br>
+              | Продюсер - Ася Олейник <br>
+              | Арт-директор - Алеся Ериго <br>
+              | Текст - Елена Котелова<br>
+              | Менеджер проекта - Халилуллин Михаил <br>
+              | На Сергее Мезенецеве —<br>
+              | Пиджак, брюки, ботинки, ремень, платок - все, Albione, рубашка, Uniqlo, носки, Calzedonia
+      section.section.section--product
+        .container
+          .images
+            img(src='i/galaxy.png').i1
+            img(src='i/gear360.png').i2
+          .texts
+            img(src='i/g360_text.png').t1
+          p.product__title Cмартфон без границ
+          p.product__text
+            | Панорамные камеры нового поколения Samsung способны на все и даже больше. Samsung Gear 360 (2017) может не только снимать видео с разрешением 4К в формате 360 градусов, но и транслировать его в режиме реального времени, а также редактировать отснятые материалы с помощью приложения Samsung Gear 360. Откройте безраничные возможности для съемки — как никогда раньше.
+          a.product__btn(href='#') Узнать больше
+      section.section.section--nav-footer
+        .container
+          nav.nav.nav--footer
+            a.nav-link(href='#') АННА ЦФАСМАН
+            a.nav-link(href='#') АГЛая Тарасова
+            a.nav-link(href='#') Сергей Мезенцев
+      
+      script.
+        var queue = new createjs.LoadQueue(false);
+        queue.loadManifest([
+          {type: createjs.AbstractLoader.CSS, src: 'css/main.css'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'https://yastatic.net/share2/share.js'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'js/main.js'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/panorama_bg.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/panorama2_bg.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image1.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image2.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image3.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image4.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image5.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image6.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image7.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image8.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/phone.png'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/galaxy.png'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/gear360.png'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/g360_text.png'}
+        ]);
+        
+        queue.on("complete", function () {
+          $('.screen0__btn').click(function(e) {
+            e.preventDefault();
+            $('html,body').animate({ scrollTop: $('.section--nav').offset().top}, "slow");
+          });
+
+          $('.bg-placeholder').addClass('_loaded');
+
+          var newAnimator = new PanoramaAnimator();
+          var newPanorama = new PanoramaDrag('.phone.draggable', '.panorama', 4000, newAnimator);
+
+          newPanorama.init();
+          newAnimator.init();
+
+        }, this);

@@ -1,0 +1,118 @@
+bg-normal()
+  background-repeat no-repeat
+  background-position center center
+  display block
+
+.social
+  display flex
+  &--inline
+    flex-direction row
+    align-items center
+    justify-content space-beetwen
+  &--column
+    flex-direction column
+    align-self center
+  &-item
+    display inline-block
+    width 20px
+    height 20px
+    background-repeat no-repeat
+    background-position center center
+    cursor pointer
+    &:hover
+      opacity .7
+    
+    &--vk
+      .social--white &
+        background-image url(../i/vk_white.png)
+        background-size 12px 15px
+      .social--grey &
+        background-image url(../i/vk_gray.png)
+        background-size 12px 15px
+    &--fb
+      .social--white &
+        background-image url(../i/fb_white.png)
+        background-size 9px 19px
+      .social--grey &
+        background-image url(../i/fb_gray.png)
+        background-size 9px 19px
+    &--tw
+      .social--white &
+        background-image url(../i/tw_white.png)
+        background-size 19px 15px
+      .social--grey &
+        background-image url(../i/tw_gray.png)
+        background-size 19px 15px
+    &--tl
+      .social--white &
+        background-image url(../i/tl_white.png)
+        background-size 21px 19px
+      .social--grey &
+        background-image url(../i/tl_gray.png)
+        background-size 21px 19px
+
+.ya-share2__badge
+  background none!important
+.ya-share2__container_size_m .ya-share2__icon
+  width 20px!important
+  height 20px!important
+.ya-share2__container_size_m .ya-share2__item
+  margin 0!important
+
+.ya-share2__list
+  display flex!important
+  .social--white &
+    flex-direction column
+    align-self center
+    justify-content space-between
+    height 170px
+  .social--grey &
+    flex-direction row
+    align-items center
+    justify-content space-between
+    width 150px
+
+.ya-share2__item_service_facebook .ya-share2__icon
+  &:hover
+    opacity .7
+  .social--white &
+    background-image url(../i/fb_white.png)
+    background-size 9px 19px
+    bg-normal()
+  .social--grey &
+    background-image url(../i/fb_gray.png)
+    background-size 9px 19px
+    bg-normal()
+.ya-share2__item_service_vkontakte .ya-share2__icon
+  &:hover
+    opacity .7
+  .social--white &
+    background-image url(../i/vk_white.png)
+    background-size 12px 15px
+    bg-normal()
+  .social--grey &
+    background-image url(../i/vk_gray.png)
+    background-size 12px 15px
+    bg-normal()
+.ya-share2__item_service_twitter .ya-share2__icon
+  &:hover
+    opacity .7
+  .social--white &
+    background-image url(../i/tw_white.png)
+    background-size 19px 15px
+    bg-normal()
+  .social--grey &
+    background-image url(../i/tw_gray.png)
+    background-size 19px 15px
+    bg-normal()
+.ya-share2__item_service_telegram .ya-share2__icon
+  &:hover
+    opacity .7
+  .social--white &
+    background-image url(../i/tl_white.png)
+    background-size 21px 19px
+    bg-normal()
+  .social--grey &
+    background-image url(../i/tl_gray.png)
+    background-size 21px 19px
+    bg-normal()
