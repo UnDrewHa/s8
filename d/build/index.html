@@ -10,7 +10,7 @@
     <script src="https://code.createjs.com/preloadjs-0.6.2.min.js"></script>
     <style>
       .bg-placeholder {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
@@ -352,6 +352,7 @@
         ]);
         
         queue.on("complete", function () {
+          window.scrollTo(0,0);
           $('.screen0__btn').click(function(e) {
             e.preventDefault();
             $('html,body').animate({ scrollTop: $('.section--nav').offset().top}, "slow");

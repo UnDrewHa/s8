@@ -183,6 +183,7 @@ html
         ]);
         
         queue.on("complete", function () {
+          window.scrollTo(0,0);
           $('.screen0__btn').click(function(e) {
             e.preventDefault();
             $('html,body').animate({ scrollTop: $('.section--nav').offset().top}, "slow");
