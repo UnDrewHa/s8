@@ -7,24 +7,229 @@
     <meta name="description" content="В совместном проекте Samsung Galaxy и Buro 24/7 шоумен Сергей Мезенцев рассказал, как сделать русский стиль классным">
     <meta property="og:image" content="http://api.nahab.info/galaxys8/assets/img/content/1/1.png">
     <link rel="shortcut icon" href="https://api.nahab.info/galaxys8/assets/img/phones.png">
-    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://code.createjs.com/preloadjs-0.6.2.min.js"></script>
+    <style>
+      .bg-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        overflow-x: hidden;
+        transition: opacity 1.2s ease;
+        pointer-events: none;
+        width: 100%;
+        z-index: 1000;
+      }
+      
+      .bg-placeholder * {
+        pointer-events: none;
+      }
+      
+      .bg-placeholder svg {
+        height: 100%;
+        width: 2600px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+      }
+      
+      .screen0 {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loader,
+      .loader:before,
+      .loader:after {
+        border-radius: 50%;
+        width: 2.5em;
+        height: 2.5em;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation: load7 1.8s infinite ease-in-out;
+        animation: load7 1.8s infinite ease-in-out;
+      }
+      
+      .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: rgba(244,244,244,0.15);
+        font-size: 8px;
+        position: relative;
+        text-indent: -9999em;
+        transform: translate(-50%, -50%, 0);
+        animation-delay: -0.16s;
+        z-index: 1;
+      }
+      
+      .loader:before,
+      .loader:after {
+        content: '';
+        position: absolute;
+        top: 0;
+      }
+      
+      .loader:before {
+        left: -3.5em;
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+      }
+      
+      .loader:after {
+        left: 3.5em;
+      }
+      
+      .logos {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYQAAACDCAMAAAC6EZztAAAArlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8tivQqAAAAOXRSTlMAD0D6oXBQ0zCQ7hQKdx/xIwT34X+xZN1fwKjl2LbO6clZRTwoGIhKNcQGHPOEaiydmZVUjb26rDmbXSN6AAAPI0lEQVR42uyca3eCOBCGB1FREAUU8X6/X6vWtvP//9guScgkaK119+zuOcvzpWgLwryZSyax8N+g2uxY3WF9XV46kPGv4O0jTGg3K5DxzzOxUOWzChn/NM0d6lglyHidzQuDuLjDNIM5ZLzMsbGBX+LV8ZZOlhd+h+8VmxNh+9b61yKcEbHXiRAxGsaHfYwpQsbTzKfutYa4WwJjETi/9Z0a4nBfWFpYn5URsdnhNZIBGU/iDJDTgJjKFVfwOxqIaCI289gYnxHDg4kx5hIynmQmg7gfvyzZ2IQn8ZbuCsAfYYw1tq/5ThmH4zZyzpDxA85k3zkCwAoFV4OlBMQ3eAJj1VjbQew+zjA+u3uwcPzeumDeRcEaMh5SWliI/djsUxSM5gDgvyFaBvzEqtE2EZEJNgsQcTgp9KN2ZzyuXyIUDCDjAc6ii39yYHKYamXv9BCDJTxmkh+ioC8u0D2XY1kH0b5sj6xejQUoyPiepYUxdo713WxVhK/4qPw4iXzWULJmnkBYY/Nz3Cy9Z54g2U6bh8PESVtxh4zukZVDlirCiR2lztgAYRSGqNCrgNNFidkM0TTtS5/VqJBRKZ65fUetlCOYyKjPICaPnLUDMONuMU4N/U6hBJxjHzWGc/DXKPlkTaR+y+QO9X/HcQcBCswFqDSRRFBehhXmCEy2iipmbPfuW5XpV0ed2gzAxQS7xQS5fLJPncD/m3khQpUCKBRQDUdQqmFS6KyGyDkA4dIlWjtMsfti7iN4Z3/7kTPZjwr8NfxL3tohmtFn0wCikiPoI47yvRkPoTmJcvJ00bfq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') 50% no-repeat;
+        animation-name: fadeIn;
+        animation-duration: 1.5s;
+        background-size: cover;
+        width: 60.625vmin;
+        height: 20.5vmin;
+        position: absolute;
+        left: 50%;
+        margin-left: -30.3125vmin;
+        top: 3%;
+        z-index: 2000;
+      }
+      
+      .logos .buro {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 46%;
+      }
+      
+      .logos .samsung {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 50%;
+        width: 46%;
+      }
+      
+      @-moz-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+      
+        to {
+          opacity: 1;
+        }
+      }
+      
+      @-webkit-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+      
+        to {
+          opacity: 1;
+        }
+      }
+      
+      @-o-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+      
+        to {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+      
+        to {
+          opacity: 1;
+        }
+      }
+      
+      @-moz-keyframes load7 {
+        0%, 80%, 100% {
+          box-shadow: 0 2.5em 0 -1.3em;
+        }
+      
+        40% {
+          box-shadow: 0 2.5em 0 0;
+        }
+      }
+      
+      @-webkit-keyframes load7 {
+        0%, 80%, 100% {
+          box-shadow: 0 2.5em 0 -1.3em;
+        }
+      
+        40% {
+          box-shadow: 0 2.5em 0 0;
+        }
+      }
+      
+      @-o-keyframes load7 {
+        0%, 80%, 100% {
+          box-shadow: 0 2.5em 0 -1.3em;
+        }
+      
+        40% {
+          box-shadow: 0 2.5em 0 0;
+        }
+      }
+      
+      @keyframes load7 {
+        0%, 80%, 100% {
+          box-shadow: 0 2.5em 0 -1.3em;
+        }
+      
+        40% {
+          box-shadow: 0 2.5em 0 0;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div style="background-color: rgb(17, 11, 27);" class="bg-placeholder">
+      <div class="loader"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 2600 960">
+        <filter id="blur" filterunits="objectBoundingBox" color-interpolation-filters="sRGB">
+          <fegaussianblur stddeviation="20,20" edgemode="duplicate">
+            <fecomponenttransfer>
+              <fefunca type="discrete" tablevalues="1 1"></fefunca>
+            </fecomponenttransfer>
+          </fegaussianblur>
+        </filter>
+        <image filter="url(#blur)" xlink:href="data:image/jpeg;base64,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" x="0" y="0" height="100%" width="2600"></image>
+      </svg>
+    </div>
     <div class="main-wrap">
       <div class="head-animation">
         <div class="panorama"><img src="i/panorama_bg.jpg" alt=""></div>
-        <div class="animation-parts">
-          <div class="logos"><a href="/" class="buro"></a><a href="http://www.samsung.com/ru/smartphones/galaxy-s8/" target="_blank" class="samsung"></a></div>
-          <div class="start-social social social--white social--column">
-            <!-- .social-item.social-item--fb-->
-            <!-- .social-item.social-item--vk-->
-            <!-- .social-item.social-item--tw-->
-            <!-- .social-item.social-item--tl-->
-            <div data-services="facebook,vkontakte,twitter,telegram" class="ya-share2"></div>
+        <div class="screen0">
+          <div class="screen0__container">
+            <div class="screen0__title"><span class="st1 _animation">«Комики</span><span class="st2 _animation">и музыканты </span><span class="st3 _animation">по своей сути — </span><span class="st4 _animation">ворчуны»</span></div>
+            <div class="screen0__text _animation">В совместном проекте Samsung Galaxy и Buro 24/7 шоумен Сергей Мезенцев рассказал, как сделать русский стиль классным</div>
           </div>
-          <div class="circle-big__title"><span>Как найти себя</span><span>в комедии</span><span> и музыке</span></div>
-          <div class="info-text _hide-on-drag">Проведите телефоном слева направо, чтобы увидеть всю панораму</div>
-          <div class="rotate-icon _hide-on-drag"></div>
+        </div>
+        <div class="logos"><a href="/" class="buro"></a><a href="http://www.samsung.com/ru/smartphones/galaxy-s8/" target="_blank" class="samsung"></a></div>
+        <div class="start-social social social--white social--column">
+          <!-- .social-item.social-item--fb-->
+          <!-- .social-item.social-item--vk-->
+          <!-- .social-item.social-item--tw-->
+          <!-- .social-item.social-item--tl-->
+          <div data-services="facebook,vkontakte,twitter,telegram" class="ya-share2"></div>
+        </div>
+        <div class="animation-parts">
+          <div class="circle-big__title"><span class='title1 _animation'>Как найти себя</span><span class='title2 _animation'>в комедии</span><span class='title3 _animation'> и музыке</span></div>
+          <div class="info-text _hide-on-drag _animation">Проведите телефоном слева направо, чтобы увидеть всю панораму</div>
+          <div class="rotate-icon _hide-on-drag _animation"></div>
           <div class="phone draggable"></div>
         </div>
       </div>
@@ -120,9 +325,43 @@
           <nav class="nav nav--footer"><a href="#" class="nav-link">АННА ЦФАСМАН</a><a href="#" class="nav-link">АГЛая Тарасова</a><a href="#" class="nav-link">Сергей Мезенцев</a></nav>
         </div>
       </div>
-    </div><script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-    <script src="https://yastatic.net/share2/share.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    </div>
+    <script>
+      var queue = new createjs.LoadQueue(false);
+        queue.loadManifest([
+          {type: createjs.AbstractLoader.CSS, src: 'css/main.css'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'https://yastatic.net/share2/share.js'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js'},
+          {type: createjs.AbstractLoader.JAVASCRIPT, src: 'js/main.js'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/panorama_bg.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/panorama2_bg.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image1.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image2.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image3.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image4.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image5.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image6.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image7.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/image8.jpg'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/phone.png'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/galaxy.png'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/gear360.png'},
+          {type: createjs.AbstractLoader.IMAGE, src: 'i/g360_text.png'}
+        ]);
+      
+        queue.on("progress", function (e) {
+          console.log(e.progress);
+        }, this);
+        queue.on("complete", function () {
+          $('body').addClass('_loaded');
+          var newAnimator = new PanoramaAnimator();
+          var newPanorama = new PanoramaDrag('.phone.draggable', '.panorama', 4000, newAnimator);
+      
+          newPanorama.init();
+          newAnimator.init();
+      
+        }, this);
+    </script>
   </body>
 </html>
