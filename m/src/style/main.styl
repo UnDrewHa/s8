@@ -1,0 +1,45 @@
+@import 'base/*'
+@import 'fonts'
+
+
+html, body
+  overflow hidden
+  &.is-enabled
+    overflow visible
+
+
+// main rules
+body
+  background-color #fff
+  font normal 16px/1 'S4', Arial, sans-serif 
+  width 100%
+  overflow hidden
+  @media media-mobile
+    overflow visible
+    background-color #fff
+  &.is-enabled
+    overflow visible
+    .section--start
+      visibility visible
+      opacity 1
+
+.container
+  width 1000px
+  margin 0 auto
+  @media media-mobile
+    padding 0 3.125%!important
+    width 100%!important
+
+.screen
+.section
+  width 100%
+  position relative
+
+.wrap-load
+  overflow: hidden
+  min-width: 1000px
+
+
+@import 'layout/*'
+@import 'mobile/*'
+@import 'helpers'

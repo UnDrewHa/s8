@@ -1,0 +1,96 @@
+.section--text-3
+	// 
+
+.text3
+	
+	.text--bracket
+		width 710px
+		margin 0 auto 80px
+	
+		+ .text--bold
+			width 806px
+			margin 0 auto 86px
+			br
+				line-height 3em
+
+	&-image-1
+		position relative
+		z-index 2
+		margin-left 20px
+	&-image-2
+		margin-bottom 70px
+	&-image-3
+		margin-left 124px
+		margin-bottom 234px
+
+	&-dark-block
+		width 730px
+		height 479px
+		box-shadow 0 6px 32px 19px rgba(#212225, 0.27)
+		background-color #212225
+		padding 60px 200px 77px 90px
+		margin-top -204px
+		margin-left -11px
+		margin-bottom 79px
+		&__title
+			color #cfcfcf
+			font-size 30px
+			line-height 40px
+			margin-bottom 20px
+			font-family 'S6'
+
+	&-grid
+		position relative
+		padding-bottom 165px
+		&:after
+			content ''
+			position absolute
+			right 0
+			left 50%
+			display block
+			background-color #353b40
+			z-index 0
+			height 1200px
+			top 328px
+		&:before
+			content ''
+			display block
+			width 1px
+			height 100%
+			position absolute
+			left 50%
+			top 0
+			transform translateX(-50%)
+			background #e7e7e7
+		
+		.text-grid
+			z-index 3
+			position relative
+	
+	
+		&__column
+			position relative
+			z-index 1
+			&--left
+				width 380px
+				padding-top 80px
+				flex-shrink 0
+				margin-left 90px
+				
+				.text--title
+					margin-bottom 70px
+				.text--light
+					margin-bottom 30px
+			&--right
+				.text--dark:nth-last-child(2)
+					width 380px
+					margin-left 50px
+					margin-bottom 20px
+				.text-3-text--roles
+					width 415px
+					margin-left 50px
+					font-size 14px
+					color #000
+					font-family 'S6'
+					letter-spacing 1px
+					line-height 24px

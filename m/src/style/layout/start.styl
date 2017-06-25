@@ -1,0 +1,92 @@
+.section--start
+	min-height 600px
+	height 100vh
+	overflow hidden
+	background #000 url(../images/Bitmap1.jpg) no-repeat
+	background-size cover
+	background-position center center
+	background none
+	position relative
+	visibility hidden
+	opacity 0
+	transition opacity .3s .4s ease
+	z-index 2
+	// @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape)
+	// 	min-height 768px
+	
+	&:after
+		content ''
+		position absolute
+		top 0
+		height 100%
+		width 1px
+		background #fff
+		opacity .1
+		right 44px
+	
+
+.start
+
+	&-btn
+		position absolute
+		left 50%
+		bottom 44px
+		display block
+		width 55px
+		height 55px
+		background url(../assets/img/arrow.png)
+		margin-left -27px
+		z-index 2
+		cursor pointer
+		animation bounce 1.2s linear infinite
+
+	&-logo-row
+		display flex
+		flex-direction row
+		justify-content center
+		padding-top 28px
+
+	&-title
+		margin 25vh auto 15vh
+		width 490px
+		text-transform uppercase
+		text-align center
+		color #fff
+		letter-spacing 12px
+		display none
+	
+	&-text
+		font-size 24px
+		line-height 30px
+		font-family 'S6'
+		width 370px
+		color #fff
+		margin 0 auto
+		position relative
+		left 174px
+		//transform translateX(50%)
+		display none
+		
+	&-social
+		right 15px
+		position absolute
+		z-index 2
+		top 50%
+		transform translateY(-50%)
+		height 170px
+		justify-content space-between
+		&._top
+			z-index 2000
+
+
+@keyframes bounce
+	0%
+		transform translateY(0)
+	25%
+		transform translateY(15%)
+	50%
+		transform translateY(0)
+	75%
+		transform translateY(-15%)
+	100%
+		transform translateY(0)
